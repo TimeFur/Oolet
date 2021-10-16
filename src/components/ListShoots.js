@@ -8,7 +8,7 @@ export default class ListShoots extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            previewImgSrc: [],
+            previewImgSrc: {},
         }
     }
     // handler
@@ -27,7 +27,14 @@ export default class ListShoots extends Component {
     }
 
     getImgSrc = (data) => {
-        console.log(data)
+        const tabId = data.id
+        const imgSrc = data.imgSrc.imgSrc
+        // console.log(tabId, imgSrc)
+        this.setState(state => {
+            return {
+                previewImgSrc: { ...state.previewImgSrc, [tabId]: imgSrc }
+            }
+        })
     }
     // conponents
     eachItemComponent = (contentList = null) => {
@@ -49,7 +56,7 @@ export default class ListShoots extends Component {
                                 {contents}
                             </div>
                             <div className={styles.ItemThumbnailWrapper}>
-                                <img src={DEFAULT_IMG} alt="" srcset="" />
+                                <img src={this.state.previewImgSrc[tabId]} alt="" srcset="" />
                             </div>
                         </div>
                     </div>
