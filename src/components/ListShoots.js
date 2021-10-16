@@ -7,23 +7,30 @@ export default class ListShoots extends Component {
         this.state = {}
     }
 
-
-    render() {
-
-        const listComponent = this.props.contentList
-            .filter(item => item != {})
+    // conponents
+    eachItemComponent = (contentList = null) => {
+        if (contentList == null)
+            return
+        const listComponent = contentList
+            .filter(item => Object.keys(item).length != 0 && item.res.length > 0)
             .map((item, i) => {
+                console.log(item)
+                const contents = item.res.map((src, i) => <div key={i} className={styles.contentSrcWrapper}>{src}</div>)
                 return (
-                    <div key={i}>
+                    <div key={i} className={styles.ItemWrapper}>
                         {item.title}
+                        {contents}
                     </div>
                 )
             })
+        return listComponent
+    }
+
+    render() {
 
         return (
-            <div>
-                ListShoots
-                {listComponent}
+            <div className={styles.ListShootsContainer}>
+                {this.eachItemComponent(this.props.contentList)}
             </div>
         )
     }
