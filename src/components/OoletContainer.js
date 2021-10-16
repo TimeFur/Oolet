@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styles from "./OoletContainer.module.css"
-
+import { PostToContent, registerCB } from "../util/Comm"
 const LOGO_IMGSRC = ""
 
 export default class OoletContainer extends Component {
@@ -8,6 +8,15 @@ export default class OoletContainer extends Component {
         super(props)
     }
 
+    // Handler
+    collectHandler = (e) => {
+        PostToContent();
+    }
+
+    getContentListCallback = (data) => {
+        console.log(data)
+    }
+    // component
     BarContainer = () => {
 
         return (
@@ -17,7 +26,7 @@ export default class OoletContainer extends Component {
                 </div>
                 <div className={styles.barTitleStyle}>Oolet</div>
                 <div className={styles.controlWrapper}>
-                    <p>Collect</p>
+                    <p onClick={this.collectHandler}>Collect</p>
                     <p>PDF</p>
                 </div>
 
@@ -26,7 +35,7 @@ export default class OoletContainer extends Component {
     }
     // life cycle
     componentDidMount() {
-
+        registerCB({ callback: this.getContentListCallback })
     }
 
     render() {
