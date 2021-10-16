@@ -15,7 +15,7 @@ export default class OoletContainer extends Component {
 
     // Handler
     collectHandler = (e) => {
-        PostToContent();
+        PostToContent({ type: "FROM_OOLETSITE_REQ" });
     }
 
     getContentListCallback = (data) => {
@@ -46,7 +46,7 @@ export default class OoletContainer extends Component {
     }
     // life cycle
     componentDidMount() {
-        registerCB({ callback: this.getContentListCallback })
+        registerCB({ type: "FROM_EXTENSION", callback: this.getContentListCallback })
     }
 
     render() {
