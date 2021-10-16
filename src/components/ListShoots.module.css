@@ -12,16 +12,17 @@
 }
 
 .ItemTextWrapper {
-    width: 40%;
+    width: 30%;
     background-color: aqua;
 }
 
 .contentSrcWrapper {
     text-align: center;
+    cursor: pointer;
 }
 
 .ItemThumbnailWrapper {
-    width: 60%;
+    width: 70%;
     height: 100%;
 }
 
