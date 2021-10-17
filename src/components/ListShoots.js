@@ -32,9 +32,12 @@ export default class ListShoots extends Component {
 
     }
     getImgSrc = (data) => {
+        if (data == null || data.imgSrc == null) {
+            return
+        }
+
         const tabId = data.id
         const imgSrc = data.imgSrc.imgSrc
-        // console.log(tabId, imgSrc)
         this.setState(state => {
             return {
                 previewImgSrc: { ...state.previewImgSrc, [tabId]: imgSrc }
