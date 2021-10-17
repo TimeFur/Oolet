@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import styles from "./OoletContainer.module.css"
+
 import { PostToContent, registerCB } from "../util/Comm"
+import PDFGen from "../util/PDFGen"
 
 import ListShoots from "./ListShoots"
 import ContentPlate from "./ContentPlate"
@@ -11,7 +13,8 @@ export default class OoletContainer extends Component {
         super(props)
         this.state = {
             contentList: [],
-            pickStatus: {}, //{imgSrc, append}
+            pickStatus: {}, //{imgSrc, append},
+            pdfdownloadContext: null
         }
     }
 
@@ -27,6 +30,16 @@ export default class OoletContainer extends Component {
         })
     }
 
+    savePDFHandler = () => {
+        console.log("create pdf")
+        this.setState(state => {
+            return {
+                pdfdownloadContext: <PDFGen />
+            }
+        }, () => {
+            console.log(this.state.pdfdownloadContext)
+        })
+    }
     getContentListCallback = (data) => {
         // {imgSrc, imgList}
         console.log(data.imgList)
@@ -48,7 +61,8 @@ export default class OoletContainer extends Component {
                 <div className={styles.controlWrapper}>
                     <p>BUY</p>
                     <p onClick={this.collectHandler}>Collect</p>
-                    <p>PDF</p>
+                    <p onClick={this.savePDFHandler}>PDF</p>
+                    <div>{this.state.pdfdownloadContext}</div>
                 </div>
             </div>
         )
