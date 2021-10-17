@@ -11,7 +11,7 @@ export default class OoletContainer extends Component {
         super(props)
         this.state = {
             contentList: [],
-            pickImg: "",
+            pickStatus: {}, //{imgSrc, append}
         }
     }
 
@@ -22,7 +22,7 @@ export default class OoletContainer extends Component {
     setPickImgCallback = (data) => {
         this.setState(state => {
             return {
-                pickImg: data.imgSrc
+                pickStatus: data
             }
         })
     }
@@ -67,7 +67,7 @@ export default class OoletContainer extends Component {
                         <ListShoots contentList={this.state.contentList} setImgCb={this.setPickImgCallback} />
                     </div>
                     <div className={styles.ContentConainerStyle}>
-                        <ContentPlate pickImg={this.state.pickImg} />
+                        <ContentPlate pickStatus={this.state.pickStatus} />
                     </div>
                 </div>
             </div>

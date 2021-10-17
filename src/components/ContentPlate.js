@@ -26,18 +26,20 @@ export default class ContentPlate extends Component {
     }
     // life cycle
     componentDidUpdate(prevProps, prevState) {
-        if (prevProps.pickImg != this.props.pickImg) {
-            this.setState(state => {
-                return {
-                    plateImgList: [...state.plateImgList, this.props.pickImg]
-                }
-            })
+        if (prevProps.pickStatus.append != this.props.pickStatus.append) {
+            if (this.props.pickStatus.append == true) {
+                this.setState(state => {
+                    return {
+                        plateImgList: [...state.plateImgList, this.props.pickStatus.imgSrc]
+                    }
+                })
+            }
         }
     }
     render() {
         return (
             <div className={styles.container}>
-                <img src={this.props.pickImg} alt="" srcset="" />
+                <img src={this.props.pickStatus.imgSrc} alt="" srcset="" />
                 <div className={styles.plateContainerStyle}>
                     {this.plateComponent()}
                 </div>

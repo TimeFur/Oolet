@@ -28,7 +28,7 @@ export default class ListShoots extends Component {
         if (e == null)
             return
         //get img from previewImgSrc
-        this.props.setImgCb({ imgSrc: this.state.previewImgSrc[tabId] })
+        this.props.setImgCb({ imgSrc: this.state.previewImgSrc[tabId], append: true })
 
     }
     getImgSrc = (data) => {
@@ -39,6 +39,8 @@ export default class ListShoots extends Component {
             return {
                 previewImgSrc: { ...state.previewImgSrc, [tabId]: imgSrc }
             }
+        }, () => {
+            this.props.setImgCb({ imgSrc: this.state.previewImgSrc[tabId], append: false })
         })
     }
     // conponents
@@ -48,7 +50,7 @@ export default class ListShoots extends Component {
         const listComponent = contentList
             .filter(item => Object.keys(item).length != 0 && item.res.length > 0)
             .map((item, i) => {
-                console.log(item)
+                // console.log(item)
                 const tabId = item.id
                 const contents = item.res.map((text, i) => {
                     return (
