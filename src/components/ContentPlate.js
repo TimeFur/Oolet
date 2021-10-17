@@ -39,7 +39,9 @@ export default class ContentPlate extends Component {
     render() {
         return (
             <div className={styles.container}>
-                <img src={this.props.pickStatus.imgSrc} alt="" srcset="" />
+                <div className={styles.plateContainerPreviewStyle}>
+                    <img src={this.props.pickStatus.imgSrc} alt="" srcset="" />
+                </div>
                 <div className={styles.plateContainerStyle}>
                     {this.plateComponent()}
                 </div>

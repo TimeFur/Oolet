@@ -1,3 +1,33 @@
 .container {
     width: 100%;
 }
+
+/* plateContainerPreviewStyle */
+
+.plateContainerPreviewStyle {
+    width: 100%;
+}
+
+.plateContainerPreviewStyle img {
+    width: 100%;
+    object-fit: contain;
+}
+
+/* plateContainerStyle */
+
+.plateContainerStyle {
+    width: 100%;
+}
+
+.plateWrapper {
+    width: 100%;
+}
+
+.itemWrapper {
+    width: 100%;
+}
+
+.itemWrapper img {
+    width: 100%;
+    object-fit: contain;
+}
