@@ -16,7 +16,6 @@ export default class ListShoots extends Component {
         if (e == null)
             return
         const target = e.currentTarget
-        console.log(target, tabId, getItem)
 
         // toggle content to get imgSrc
         PostToContent({
@@ -25,7 +24,13 @@ export default class ListShoots extends Component {
             getItem: getItem
         })
     }
+    itemClick = (e = null, tabId = "", getItem = "") => {
+        if (e == null)
+            return
+        //get img from previewImgSrc
+        this.props.setImgCb({ imgSrc: this.state.previewImgSrc[tabId] })
 
+    }
     getImgSrc = (data) => {
         const tabId = data.id
         const imgSrc = data.imgSrc.imgSrc
@@ -46,7 +51,13 @@ export default class ListShoots extends Component {
                 console.log(item)
                 const tabId = item.id
                 const contents = item.res.map((text, i) => {
-                    return <div key={i} className={styles.contentSrcWrapper} onMouseEnter={(e) => { this.itemHover(e, tabId, text) }}>{text}</div>
+                    return (
+                        <div key={i} className={styles.contentSrcWrapper}
+                            onMouseEnter={(e) => { this.itemHover(e, tabId, text) }}
+                            onClick={(e) => { this.itemClick(e, tabId, text) }}>
+                            {text}
+                        </div>
+                    )
                 })
                 return (
                     <div key={i} className={styles.ItemWrapper}>

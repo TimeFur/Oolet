@@ -11,12 +11,20 @@ export default class OoletContainer extends Component {
         super(props)
         this.state = {
             contentList: [],
+            pickImg: "",
         }
     }
 
     // Handler
     collectHandler = (e) => {
         PostToContent({ type: "FROM_OOLETSITE_REQ" });
+    }
+    setPickImgCallback = (data) => {
+        this.setState(state => {
+            return {
+                pickImg: data.imgSrc
+            }
+        })
     }
 
     getContentListCallback = (data) => {
@@ -56,10 +64,10 @@ export default class OoletContainer extends Component {
                 {this.BarContainer()}
                 <div className={styles.contentWrapper}>
                     <div className={styles.layoutContainerStyle}>
-                        <ListShoots contentList={this.state.contentList} />
+                        <ListShoots contentList={this.state.contentList} setImgCb={this.setPickImgCallback} />
                     </div>
                     <div className={styles.ContentConainerStyle}>
-                        <ContentPlate />
+                        <ContentPlate pickImg={this.state.pickImg} />
                     </div>
                 </div>
             </div>
