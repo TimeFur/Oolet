@@ -1,25 +1,45 @@
 .ListShootsContainer {
     display: flex;
+    flex-direction: column;
     width: 100%;
-    justify-content: space-around;
+    height: 100%;
 }
+
+.ItemWrapper {
+    height: 8rem;
+    width: 100%;
+}
+
+/* itemTitleStyle */
+
+.itemTitleStyle {
+    height: 20%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+/* ItemImgListWrapper */
 
 .ItemImgListWrapper {
     display: flex;
     justify-content: space-between;
-    height: 25%;
+    height: 80%;
     background-color: rgb(216, 247, 177);
 }
 
 .ItemTextWrapper {
     width: 30%;
-    background-color: aqua;
+    overflow: auto;
+    background-color: rgb(245, 204, 204);
 }
 
 .contentSrcWrapper {
     text-align: center;
     cursor: pointer;
 }
+
+/* ItemThumbnailWrapper */
 
 .ItemThumbnailWrapper {
     width: 70%;

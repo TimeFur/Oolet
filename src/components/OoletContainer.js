@@ -3,6 +3,7 @@ import styles from "./OoletContainer.module.css"
 import { PostToContent, registerCB } from "../util/Comm"
 
 import ListShoots from "./ListShoots"
+import ContentPlate from "./ContentPlate"
 const LOGO_IMGSRC = ""
 
 export default class OoletContainer extends Component {
@@ -37,10 +38,10 @@ export default class OoletContainer extends Component {
                 </div>
                 <div className={styles.barTitleStyle}>Oolet</div>
                 <div className={styles.controlWrapper}>
+                    <p>BUY</p>
                     <p onClick={this.collectHandler}>Collect</p>
                     <p>PDF</p>
                 </div>
-
             </div>
         )
     }
@@ -53,10 +54,14 @@ export default class OoletContainer extends Component {
         return (
             <div className={styles.container}>
                 {this.BarContainer()}
-                <div className={styles.layoutContainerStyle}>
-                    <ListShoots contentList={this.state.contentList} />
+                <div className={styles.contentWrapper}>
+                    <div className={styles.layoutContainerStyle}>
+                        <ListShoots contentList={this.state.contentList} />
+                    </div>
+                    <div className={styles.ContentConainerStyle}>
+                        <ContentPlate />
+                    </div>
                 </div>
-                <div className={styles.ContentConainerStyle}></div>
             </div>
         )
     }

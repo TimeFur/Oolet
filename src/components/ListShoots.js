@@ -50,7 +50,8 @@ export default class ListShoots extends Component {
                 })
                 return (
                     <div key={i} className={styles.ItemWrapper}>
-                        {item.title}
+                        <div className={styles.itemTitleStyle}>{item.title}</div>
+
                         <div className={styles.ItemImgListWrapper}>
                             <div className={styles.ItemTextWrapper} >
                                 {contents}
