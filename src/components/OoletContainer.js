@@ -6,6 +6,8 @@ import { PostToContent, registerCB } from "../util/Comm"
 import ListShoots from "./ListShoots"
 import ContentPlate from "./ContentPlate"
 import ImgSearch from "../util/ImgSearch"
+import { downloadImage } from "../util/download"
+// static source
 import LOGO_IMGSRC from "../static/icon-Oolet.png"
 
 export default class OoletContainer extends Component {
@@ -57,6 +59,7 @@ export default class OoletContainer extends Component {
 
     downloadImgHandler = (e) => {
         console.log("Download image")
+        downloadImage(this.state.pickStatus.imgSrc)
     }
     // component
     BarContainer = () => {
