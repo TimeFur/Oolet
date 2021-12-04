@@ -5,6 +5,7 @@ import { PostToContent, registerCB } from "../util/Comm"
 
 import ListShoots from "./ListShoots"
 import ContentPlate from "./ContentPlate"
+import CropImageContainer from "./CropImageContainer"
 import ImgSearch from "../util/ImgSearch"
 import { downloadImage } from "../util/download"
 // static source
@@ -16,7 +17,8 @@ export default class OoletContainer extends Component {
         this.state = {
             contentList: [],
             pickStatus: {}, //{imgSrc, append},
-            searchImage: undefined
+            searchImage: undefined,
+            cropImageSrc: ""
         }
     }
 
@@ -34,7 +36,6 @@ export default class OoletContainer extends Component {
 
     getContentListCallback = (data) => {
         // {imgSrc, imgList}
-        console.log(data.imgList)
         this.setState(state => {
             return {
                 contentList: data.imgList
@@ -46,7 +47,7 @@ export default class OoletContainer extends Component {
     searchImgHandler = (e) => {
         this.setState(state => {
             return {
-                searchImage: state.pickStatus.imgSrc
+                searchImage: state.cropImageSrc
             }
         }, () => {
             this.setState(state => {
@@ -58,8 +59,15 @@ export default class OoletContainer extends Component {
     }
 
     downloadImgHandler = (e) => {
-        console.log("Download image")
-        downloadImage(this.state.pickStatus.imgSrc)
+        downloadImage(this.state.cropImageSrc)
+    }
+
+    cropCompleteCallback = (cropImageSrc) => {
+        this.setState(state => {
+            return {
+                cropImageSrc: cropImageSrc
+            }
+        })
     }
     // component
     BarContainer = () => {
@@ -102,7 +110,8 @@ export default class OoletContainer extends Component {
                     </div>
                     <div className={styles.ContentConainerStyle}>
                         <this.editImageBarContainer />
-                        <ContentPlate pickStatus={this.state.pickStatus} />
+                        <CropImageContainer imgSrc={this.state.pickStatus.imgSrc} cropCompleteCallback={this.cropCompleteCallback} />
+                        {/* <ContentPlate pickStatus={this.state.pickStatus} /> */}
                     </div>
                     <div>
                         {/* for advertisement */}
