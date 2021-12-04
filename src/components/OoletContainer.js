@@ -2,12 +2,11 @@ import React, { Component } from 'react'
 import styles from "./OoletContainer.module.css"
 
 import { PostToContent, registerCB } from "../util/Comm"
-import PDFGen from "../util/PDFGen"
 
 import ListShoots from "./ListShoots"
 import ContentPlate from "./ContentPlate"
 import ImgSearch from "../util/ImgSearch"
-const LOGO_IMGSRC = ""
+import LOGO_IMGSRC from "../static/icon-Oolet.png"
 
 export default class OoletContainer extends Component {
     constructor(props) {
@@ -45,7 +44,7 @@ export default class OoletContainer extends Component {
         return (
             <div className={styles.barStyle}>
                 <div className={styles.barImgWrapperStyle}>
-                    <img src={LOGO_IMGSRC} alt="" srcset="LOGO" />
+                    <img src={LOGO_IMGSRC} alt="" />
                 </div>
                 <div className={styles.barTitleStyle}>Oolet</div>
                 <div className={styles.controlWrapper}>
