@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { PDFDownloadLink, Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
+import { PDFDownloadLink, Page, Text, View, Document, StyleSheet, Image } from '@react-pdf/renderer';
 
 export default class PDFGen extends Component {
     constructor(props) {
@@ -11,23 +11,33 @@ export default class PDFGen extends Component {
         const styles = StyleSheet.create({
             page: {
                 flexDirection: 'row',
-                backgroundColor: '#E4E4E4'
             },
             section: {
                 margin: 10,
                 padding: 10,
                 flexGrow: 1
-            }
+            },
+            image: {
+                width: "50%",
+                height: "50%",
+                objectFit: "contain",
+                padding: 10
+            },
+            centerImage: {
+                alignItems: "center",
+                flexGrow: 1
+            },
         });
+
         return (
             < Document >
                 <Page size="A4" style={styles.page}>
-                    <View style={styles.section}>
-                        <Text>Section #1</Text>
-                    </View>
-                    <View style={styles.section}>
-                        <Text>Section #2</Text>
-                    </View>
+                    <Image style={styles.image}
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparency_demonstration_1.png/280px-PNG_transparency_demonstration_1.png" >
+                    </Image>
+                    <Image style={styles.image}
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparency_demonstration_1.png/280px-PNG_transparency_demonstration_1.png" >
+                    </Image>
                 </Page>
             </Document >
         );

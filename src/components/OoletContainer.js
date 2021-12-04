@@ -6,6 +6,7 @@ import PDFGen from "../util/PDFGen"
 
 import ListShoots from "./ListShoots"
 import ContentPlate from "./ContentPlate"
+import ImgSearch from "../util/ImgSearch"
 const LOGO_IMGSRC = ""
 
 export default class OoletContainer extends Component {
@@ -14,7 +15,6 @@ export default class OoletContainer extends Component {
         this.state = {
             contentList: [],
             pickStatus: {}, //{imgSrc, append},
-            pdfdownloadContext: null
         }
     }
 
@@ -30,16 +30,6 @@ export default class OoletContainer extends Component {
         })
     }
 
-    savePDFHandler = () => {
-        console.log("create pdf")
-        this.setState(state => {
-            return {
-                pdfdownloadContext: <PDFGen />
-            }
-        }, () => {
-            console.log(this.state.pdfdownloadContext)
-        })
-    }
     getContentListCallback = (data) => {
         // {imgSrc, imgList}
         console.log(data.imgList)
@@ -61,8 +51,7 @@ export default class OoletContainer extends Component {
                 <div className={styles.controlWrapper}>
                     <p>BUY</p>
                     <p onClick={this.collectHandler}>Collect</p>
-                    <p onClick={this.savePDFHandler}>PDF</p>
-                    <div>{this.state.pdfdownloadContext}</div>
+
                 </div>
             </div>
         )
@@ -76,6 +65,7 @@ export default class OoletContainer extends Component {
         return (
             <div className={styles.container}>
                 {this.BarContainer()}
+
                 <div className={styles.contentWrapper}>
                     <div className={styles.layoutContainerStyle}>
                         <ListShoots contentList={this.state.contentList} setImgCb={this.setPickImgCallback} />
