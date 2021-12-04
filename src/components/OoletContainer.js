@@ -39,6 +39,14 @@ export default class OoletContainer extends Component {
         })
 
     }
+
+    searchImgHandler = (e) => {
+        console.log("Search image")
+    }
+
+    downloadImgHandler = (e) => {
+        console.log("Download image")
+    }
     // component
     BarContainer = () => {
         return (
@@ -50,8 +58,16 @@ export default class OoletContainer extends Component {
                 <div className={styles.controlWrapper}>
                     <p>BUY</p>
                     <p onClick={this.collectHandler}>Collect</p>
-
                 </div>
+            </div>
+        )
+    }
+
+    editImageBarContainer = () => {
+        return (
+            <div className={styles.editImgBarStyle}>
+                <input className={styles.editBarSearchStyle} type="button" value="search" onClick={(e) => this.searchImgHandler(e)} />
+                <input className={styles.editBarDownloadStyle} type="button" value="download" onClick={(e) => this.downloadImgHandler(e)} />
             </div>
         )
     }
@@ -70,7 +86,11 @@ export default class OoletContainer extends Component {
                         <ListShoots contentList={this.state.contentList} setImgCb={this.setPickImgCallback} />
                     </div>
                     <div className={styles.ContentConainerStyle}>
+                        <this.editImageBarContainer />
                         <ContentPlate pickStatus={this.state.pickStatus} />
+                    </div>
+                    <div>
+                        {/* for advertisement */}
                     </div>
                 </div>
             </div>
