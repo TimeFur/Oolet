@@ -14,6 +14,7 @@ export default class OoletContainer extends Component {
         this.state = {
             contentList: [],
             pickStatus: {}, //{imgSrc, append},
+            searchImage: undefined
         }
     }
 
@@ -41,7 +42,17 @@ export default class OoletContainer extends Component {
     }
 
     searchImgHandler = (e) => {
-        console.log("Search image")
+        this.setState(state => {
+            return {
+                searchImage: state.pickStatus.imgSrc
+            }
+        }, () => {
+            this.setState(state => {
+                return {
+                    searchImage: undefined
+                }
+            })
+        })
     }
 
     downloadImgHandler = (e) => {
@@ -68,6 +79,7 @@ export default class OoletContainer extends Component {
             <div className={styles.editImgBarStyle}>
                 <input className={styles.editBarSearchStyle} type="button" value="search" onClick={(e) => this.searchImgHandler(e)} />
                 <input className={styles.editBarDownloadStyle} type="button" value="download" onClick={(e) => this.downloadImgHandler(e)} />
+                <ImgSearch searchImg={this.state.searchImage} />
             </div>
         )
     }
