@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    width: 96%;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Desp Style */
+.despStyle {
+    width: 36%;
+}
+
+.despTitleStyle {}
+
+.despDetailStyle {}
+
+/* Vide Manual Style */
+.vidManualStyle {
+    width: 60%;
+
+}
