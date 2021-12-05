@@ -1,13 +1,13 @@
 .container {
     display: flex;
-    width: 96%;
+    width: 100%;
     justify-content: center;
     align-items: center;
 }
 
 /* Desp Style */
 .despStyle {
-    width: 36%;
+    width: 40%;
 }
 
 .despTitleStyle {}

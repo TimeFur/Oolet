@@ -6,7 +6,6 @@ import YouTube from 'react-youtube';
 export default class HomeHeader extends Component {
     constructor(props) {
         super(props)
-
     }
 
     // Handler
