@@ -74,7 +74,7 @@ export default class ListShoots extends Component {
                             </div>
                             <div className={styles.ItemThumbnailWrapper}>
                                 {this.state.previewImgSrc[tabId] ?
-                                    <img src={this.state.previewImgSrc[tabId]} alt="" srcset="" /> : ""}
+                                    <img src={this.state.previewImgSrc[tabId]} alt="" srcSet="" /> : ""}
                             </div>
                         </div>
                     </div>
