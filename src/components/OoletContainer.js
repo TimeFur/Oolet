@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import styles from "./OoletContainer.module.css"
 
 // componenets
 import GatherPage from "./GatherPage"
+import HomePage from "./HomePage"
+import DownloadProPage from "./DownloadProPage"
 
 // utils function
 import { PostToContent, registerCB } from "../util/Comm"
@@ -42,9 +45,10 @@ export default class OoletContainer extends Component {
                 </div>
                 <div className={styles.barTitleStyle}>Oolet</div>
                 <div className={styles.controlWrapper}>
-                    <p>HOME</p>
+                    <Link to="/">HOME</Link>
+                    <Link to="/downloadpro">Download</Link>
                     <p onClick={this.collectHandler}>Gather</p>
-                    <p>Download</p>
+                    <Link to="/gather">Gather</Link>
                 </div>
             </div>
         )
@@ -58,14 +62,20 @@ export default class OoletContainer extends Component {
     render() {
         return (
             <div className={styles.container}>
-                {this.BarContainer()}
+                <BrowserRouter>
+                    {this.BarContainer()}
 
-                <div className={styles.contentWrapper}>
-                    <GatherPage contentList={this.state.contentList} />
-                    <div>
-                        {/* for advertisement */}
+                    <div className={styles.contentWrapper}>
+                        <Routes>
+                            <Route path="/" element={<HomePage />} />
+                            <Route path="/gather" element={<GatherPage contentList={this.state.contentList} />} ></Route>
+                            <Route path="/downloadpro" element={<DownloadProPage />} />
+                        </Routes>
+                        <div>
+                            {/* for advertisement */}
+                        </div>
                     </div>
-                </div>
+                </BrowserRouter>
             </div>
         )
     }
