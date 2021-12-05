@@ -21,6 +21,9 @@ export default class GatherPage extends Component {
     }
 
     // Handler and callback
+    gatherHandler = (e) => {
+        this.props.gatherHandler(e)
+    }
     setPickImgCallback = (data) => {
         this.setState(state => {
             return {
@@ -55,10 +58,6 @@ export default class GatherPage extends Component {
         })
     }
 
-    componentDidUpdate() {
-        console.log("Update")
-    }
-
     // sub-components
     editImageBarContainer = () => {
         return (
@@ -73,6 +72,7 @@ export default class GatherPage extends Component {
         return (
             <>
                 <div className={styles.layoutContainerStyle}>
+                    <input type="button" value="Gather Shoots" onClick={this.gatherHandler} />
                     <ListShoots contentList={this.props.contentList} setImgCb={this.setPickImgCallback} />
                 </div>
                 <div className={styles.ContentConainerStyle}>
