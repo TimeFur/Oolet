@@ -58,7 +58,7 @@ export default class ImgSearch extends Component {
 
     render() {
         return (
-            <div>
+            <div className={this.props.className}>
                 <form id="formId" ref={this.mountFormInst} action="https://www.google.com/searchbyimage/upload" METHOD="POST" target="_blank" enctype="multipart/form-data">
                     <input ref={this.mountFileInst} type="file" id="fId" name="encoded_image" />
                 </form>

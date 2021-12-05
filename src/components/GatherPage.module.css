@@ -1,0 +1,29 @@
+/* layoutContainerStyle */
+
+.layoutContainerStyle {
+    width: 16%;
+}
+
+/* editImgBarStyle */
+.editImgBarStyle {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+    /* background-color: rgb(187, 245, 187); */
+}
+
+.editBarSearchStyle, .editBarDownloadStyle {
+    border: 1rem;
+    border-radius: 1rem;
+    color: rgb(102, 114, 241);
+    background: rgb(248, 248, 248);
+    cursor: pointer;
+    box-shadow: 1px 1px grey;
+}
+
+.hiddenStyle {
+    display: none;
+}
