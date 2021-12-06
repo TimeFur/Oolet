@@ -40,14 +40,18 @@ export default class HomeHeader extends Component {
         };
         return (
             <div className={styles.vidManualStyle}>
-                <YouTube videoId="R1ovtJ70sug" opts={opts} />
+                <YouTube videoId="nXpB1rixnPQ" opts={opts} />
             </div>
         )
     }
 
     render() {
+
+        const style = {
+            height: this.props.height
+        }
         return (
-            <div className={styles.container}>
+            <div className={styles.container} style={style}>
                 <this.DespProductComponent />
                 <this.VideoDespComponent />
             </div>

@@ -42,8 +42,11 @@ export default class HomeManual extends Component {
         )
     }
     render() {
+        const style = {
+            height: this.props.height
+        }
         return (
-            <div className={styles.container}>
+            <div className={styles.container} style={style}>
                 <h1>HomeManual</h1>
                 <this.manualCardWrapper />
             </div>

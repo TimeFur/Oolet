@@ -7,15 +7,20 @@ import DespFeatures from "./HomeComponents/DespFeatures"
 import FuncFeatures from "./HomeComponents/FuncFeatures"
 import HomeManual from "./HomeComponents/HomeManual"
 
+
 export default class HomePage extends Component {
+    constructor(props) {
+        super(props)
+    }
 
     render() {
+
         return (
             <div className={styles.container}>
-                <HomeHeader />
-                <DespFeatures />
-                <HomeManual />
-                <FuncFeatures />
+                <HomeHeader height="80vh" />
+                <DespFeatures height="40vh" />
+                <HomeManual height="60vh" />
+                <FuncFeatures height="60vh" />
             </div>
         )
     }

@@ -40,7 +40,7 @@ export default class FuncFeatures extends Component {
     render() {
         // Setting height
         const style = {
-            height: DEFAULT_HEIGHT,
+            height: this.props.height,
         }
 
         return (

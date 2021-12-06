@@ -43,8 +43,11 @@ export default class DespFeatures extends Component {
     }
 
     render() {
+        const style = {
+            height: this.props.height
+        }
         return (
-            <div className={styles.container}>
+            <div className={styles.container} style={style}>
                 <h1>Features</h1>
                 <this.FeaturesWrapper />
             </div>

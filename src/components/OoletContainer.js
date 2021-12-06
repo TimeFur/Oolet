@@ -12,6 +12,7 @@ import { PostToContent, registerCB } from "../util/Comm"
 
 // static source
 import LOGO_IMGSRC from "../static/icon-Oolet.png"
+import BG_SRC from "../static/bg.png"
 
 export default class OoletContainer extends Component {
     constructor(props) {
@@ -59,8 +60,13 @@ export default class OoletContainer extends Component {
     }
 
     render() {
+
+        const style = {
+            backgroundImage: `url(${BG_SRC})`,
+        }
+
         return (
-            <div className={styles.container}>
+            <div className={styles.container} style={style}>
                 <BrowserRouter>
                     {this.BarContainer()}
 
