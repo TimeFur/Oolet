@@ -13,11 +13,15 @@ export default class HomePage extends Component {
         super(props)
     }
 
+
+    // sub-component
+
     render() {
 
         return (
             <div className={styles.container}>
                 <HomeHeader height="80vh" />
+                {/* Add bar */}
                 <DespFeatures height="40vh" />
                 <HomeManual height="60vh" />
                 <FuncFeatures height="60vh" />

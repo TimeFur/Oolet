@@ -7,10 +7,13 @@
 
 /* Desp Style */
 .despStyle {
+    position: relative;
     width: 40%;
 }
 
-.despTitleStyle {}
+.despTitleStyle {
+    z-index: 1;
+}
 
 .despDetailStyle {}
 
@@ -18,4 +21,13 @@
 .vidManualStyle {
     width: 60%;
 
+}
+
+.iconFlatStyle {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+
+    opacity: 0.5;
+    z-index: 0;
 }

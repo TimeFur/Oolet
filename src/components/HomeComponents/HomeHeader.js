@@ -3,6 +3,8 @@ import styles from "./HomeHeader.module.css"
 // modules
 import YouTube from 'react-youtube';
 
+import LOGO_IMGSRC from "../../static/icon-Oolet.png"
+
 export default class HomeHeader extends Component {
     constructor(props) {
         super(props)
@@ -11,6 +13,14 @@ export default class HomeHeader extends Component {
     // Handler
 
     // sub-components
+    iconFloat = () => {
+        return (
+            <div className={styles.iconFlatStyle}>
+                <img src={LOGO_IMGSRC} alt="" srcset="" />
+            </div>
+        )
+    }
+
     DespProductComponent = () => {
         return (<div className={styles.despStyle}>
             <div className={styles.despTitleStyle}>
@@ -52,6 +62,7 @@ export default class HomeHeader extends Component {
         }
         return (
             <div className={styles.container} style={style}>
+                <this.iconFloat />
                 <this.DespProductComponent />
                 <this.VideoDespComponent />
             </div>
