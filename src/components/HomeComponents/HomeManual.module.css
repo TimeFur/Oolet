@@ -6,13 +6,15 @@
 /* Card Wrapper Style */
 .cardWrapperStyle {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 1rem;
 }
 
 /* Manual Card Style */
 .manualCardStyle {
     position: relative;
-    width: 23%;
+    height: 100%;
 }
 
 .manualCardImgWrapper {
