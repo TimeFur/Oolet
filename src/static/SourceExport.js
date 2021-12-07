@@ -19,6 +19,11 @@ import DOWNLOAD_HOVER_SRC from "./manual-download-hover.png"
 import DOWNLOAD_RESULT_SRC from "./manual-download-result.png"
 
 import FUNC_FEATURES_SRC from "./func-feature.png"
+
+import FEATURE_SEARCH_SRC from "./feature-search.png"
+import FEATURE_DOWNLOAD_SRC from "./feature-download.png"
+import FEATURE_SHOOT_SRC from "./feature-shoot.png"
+import FEATURE_CROP_SRC from "./feature-crop.png"
 // Export src
 export {
     CLICK_SRC, SHOOT_SRC, PREVIEW_SRC, SNAP_SRC,
@@ -26,4 +31,5 @@ export {
     SEARCH_SRC, SEARCH_HOVER_SRC, SEARCH_RESULT_SRC,
     DOWNLOAD_CROP_SRC, DOWNLOAD_CROP_HOVER_SRC, DOWNLOAD_SRC, DOWNLOAD_HOVER_SRC, DOWNLOAD_RESULT_SRC,
     FUNC_FEATURES_SRC,
+    FEATURE_SEARCH_SRC, FEATURE_DOWNLOAD_SRC, FEATURE_SHOOT_SRC, FEATURE_CROP_SRC
 } 

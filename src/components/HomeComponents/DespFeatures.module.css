@@ -2,8 +2,19 @@
     width: 100%;
 }
 
+/* cardContainerStyle */
+.cardContainerStyle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 60%;
+    box-shadow: 5px 6px 2px rgb(247, 89, 89);
+}
+
 .iconWrapperStyle {
-    width: 3rem;
+    width: 6rem;
+    height: 6rem;
 }
 
 .iconWrapperStyle img {

@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import styles from "./DespFeatures.module.css"
 
+import {
+    FEATURE_SEARCH_SRC, FEATURE_DOWNLOAD_SRC, FEATURE_SHOOT_SRC, FEATURE_CROP_SRC
+} from "../../static/SourceExport"
 import ICON_DEFAULT from "../../static/icon-Oolet.png"
 
 export default class DespFeatures extends Component {
@@ -10,10 +13,10 @@ export default class DespFeatures extends Component {
 
         this.state = {
             featureList: [
-                { icon: ICON_DEFAULT, title: "Title", desp: "lorem" },
-                { icon: ICON_DEFAULT, title: "Title", desp: "lorem" },
-                { icon: ICON_DEFAULT, title: "Title", desp: "lorem" },
-                { icon: ICON_DEFAULT, title: "Title", desp: "lorem" },
+                { icon: FEATURE_SHOOT_SRC, title: "Screenshot and Snap", desp: "" },
+                { icon: FEATURE_CROP_SRC, title: "Scale and Crop", desp: "" },
+                { icon: FEATURE_SEARCH_SRC, title: "Image Search", desp: "" },
+                { icon: FEATURE_DOWNLOAD_SRC, title: "Download visible area ", desp: "" },
             ]
         }
     }
@@ -21,7 +24,7 @@ export default class DespFeatures extends Component {
     // sub-components
     FeatureCard = ({ key = 0, icon = "", title = "Title", desp = "" }) => {
         return (
-            <div key={key}>
+            <div key={key} className={styles.cardContainerStyle}>
                 <div className={styles.iconWrapperStyle}>
                     <img src={icon} alt="" />
                 </div>
