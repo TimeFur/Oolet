@@ -4,7 +4,8 @@ import styles from "./HomeManual.module.css"
 import {
     CLICK_SRC, SHOOT_SRC, PREVIEW_SRC, SNAP_SRC,
     HOVER_CLICK_SRC, HOVER_SHOOT_SRC, HOVER_PREVIEW_SRC, HOVER_SNAP_SRC,
-    SEARCH_SRC, SEARCH_HOVER_SRC, SEARCH_RESULT_SRC
+    SEARCH_SRC, SEARCH_HOVER_SRC, SEARCH_RESULT_SRC,
+    DOWNLOAD_CROP_SRC, DOWNLOAD_CROP_HOVER_SRC, DOWNLOAD_SRC, DOWNLOAD_HOVER_SRC, DOWNLOAD_RESULT_SRC
 } from "../../static/SourceExport"
 
 export default class HomeManual extends Component {
@@ -22,8 +23,9 @@ export default class HomeManual extends Component {
                 { imgSrc: SEARCH_RESULT_SRC, hoverImgSrc: SEARCH_RESULT_SRC, title: "Search", popDesp: "Google image search" },
             ],
             downloadList: [
-                { imgSrc: CLICK_SRC, hoverImgSrc: HOVER_CLICK_SRC, title: "Click extension", popDesp: "Click icon" },
-                { imgSrc: SHOOT_SRC, hoverImgSrc: HOVER_SHOOT_SRC, title: "Camera", popDesp: "Camera shoot" },
+                { imgSrc: DOWNLOAD_CROP_SRC, hoverImgSrc: DOWNLOAD_CROP_HOVER_SRC, title: "Crop", popDesp: "Crop image" },
+                { imgSrc: DOWNLOAD_SRC, hoverImgSrc: DOWNLOAD_HOVER_SRC, title: "Download", popDesp: "Download as png file" },
+                { imgSrc: DOWNLOAD_RESULT_SRC, hoverImgSrc: DOWNLOAD_RESULT_SRC, title: "Image", popDesp: "Parital Image file" },
             ]
         }
     }
@@ -69,6 +71,7 @@ export default class HomeManual extends Component {
                 <h1>HomeManual</h1>
                 {this.manualCardWrapper(this.state.list, "24%")}
                 {this.manualCardWrapper(this.state.searchList, "40%")}
+                {this.manualCardWrapper(this.state.downloadList, "26%")}
             </div>
         )
     }

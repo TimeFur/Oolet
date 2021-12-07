@@ -22,7 +22,7 @@ export default class HomePage extends Component {
                 <HomeHeader height="80vh" />
                 {/* Add bar */}
                 <DespFeatures height="40vh" />
-                <HomeManual height="90vh" />
+                <HomeManual height="160vh" />
                 <FuncFeatures height="60vh" />
             </div>
         )
