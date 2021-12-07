@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import styles from "./FuncFeatures.module.css"
 
+import {
+    FUNC_FEATURES_SRC
+} from "../../static/SourceExport"
+
 const IMG_SRC = "https://i.pinimg.com/564x/65/b8/ea/65b8ea016a92ac16696a640483926a4d.jpg"
 const DEFAULT_HEIGHT = "40vh"
 export default class FuncFeatures extends Component {
@@ -15,16 +19,16 @@ export default class FuncFeatures extends Component {
         return (
             <div className={styles.featureListWrapperStyle}>
                 <ul className={styles.featureListStyle}>
-                    <li>Moving image in the site</li>
-                    <li>Hold the left click in the position in the image and drag to right down to wrap area</li>
-                    <li>red scale anchor: Scale the image in fix ratio</li>
-                    <li>green scale anchor: Ajust visible area</li>
-                    <li>Slider: control opacity of the image</li>
-                    <li>"H" icon: hidden image by replacing it as H icon</li>
-                    <li>"X" icon: delete this shot</li>
-                    <li>"D" icon: Download visible part of image</li>
-                    <li>"F" icon: show the whole image in container</li>
-                    <li>"S" icon: search image</li>
+                    <li><b>Moving image:</b> Click once and drag anywhere</li>
+                    <li><b>Crop image:</b> Hold the left click in any position of the image and drag to right down to crop area</li>
+                    <li><b>Red scale anchor:</b> Scale the image in fix ratio</li>
+                    <li><b>Green scale anchor:</b> Ajust visible area</li>
+                    <li><b>Slider:</b> control opacity of the image</li>
+                    <li><b>"H" icon:</b> hidden image by replacing it as H icon</li>
+                    <li><b>"X" icon:</b> delete this shot</li>
+                    <li><b>"D" icon:</b> Download visible part of image</li>
+                    <li><b>"F" icon:</b> show the whole image in container</li>
+                    <li><b>"S" icon:</b> search image by google search</li>
                 </ul>
             </div>
         )
@@ -33,7 +37,7 @@ export default class FuncFeatures extends Component {
     featureIntroImage = () => {
         return (
             <div className={styles.featureImgStyle}>
-                <img src={IMG_SRC} alt="" srcset="" />
+                <img src={FUNC_FEATURES_SRC} alt="" srcset="" />
             </div>
         )
     }
