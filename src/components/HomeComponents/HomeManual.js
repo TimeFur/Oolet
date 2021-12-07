@@ -1,17 +1,20 @@
 import React, { Component } from 'react'
 import styles from "./HomeManual.module.css"
 
-const IMG_SRC = "https://i.pinimg.com/564x/5b/8b/a6/5b8ba662dafbe11a4a67137628818f04.jpg"
+import {
+    CLICK_SRC, SHOOT_SRC, PREVIEW_SRC, SNAP_SRC,
+    HOVER_CLICK_SRC, HOVER_SHOOT_SRC, HOVER_PREVIEW_SRC, HOVER_SNAP_SRC
+} from "../../static/SourceExport"
 
 export default class HomeManual extends Component {
     constructor(props) {
         super(props)
         this.state = {
             list: [
-                { imgSrc: IMG_SRC, title: "Stitch", popDesp: "Lorem" },
-                { imgSrc: IMG_SRC, title: "Stitch", popDesp: "Pop click" },
-                { imgSrc: IMG_SRC, title: "Stitch", popDesp: "Show up" },
-                { imgSrc: IMG_SRC, title: "Stitch", popDesp: "Show up" },
+                { imgSrc: CLICK_SRC, hoverImgSrc: HOVER_CLICK_SRC, title: "Click extension", popDesp: "Click icon" },
+                { imgSrc: SHOOT_SRC, hoverImgSrc: HOVER_SHOOT_SRC, title: "Camera", popDesp: "Camera shoot" },
+                { imgSrc: PREVIEW_SRC, hoverImgSrc: HOVER_PREVIEW_SRC, title: "Preview hover", popDesp: "preview img" },
+                { imgSrc: SNAP_SRC, hoverImgSrc: HOVER_SNAP_SRC, title: "Snap", popDesp: "Snap in site" },
             ]
         }
     }
@@ -19,13 +22,17 @@ export default class HomeManual extends Component {
     // handler
 
     // sub-component
-    manualCard = ({ key = 0, imgSrc = IMG_SRC, title = "", popDesp = "" }) => {
+    manualCard = ({ key = 0, imgSrc = "", hoverImgSrc = "", title = "", popDesp = "" }) => {
+
+
         return (
             <div key={key} className={styles.manualCardStyle}>
-                <div className={styles.popDespStyle}>{popDesp}</div>
                 <div className={styles.manualCardImgWrapper}>
-                    <img src={imgSrc} alt="" />
+                    <img className={styles.hoverImgStyle} src={hoverImgSrc} alt="" />
+                    <img className={styles.cardImgStyle} src={imgSrc} alt="" />
                 </div>
+
+                <div className={styles.popDespStyle}>{popDesp}</div>
                 <h2>{title}</h2>
             </div>
         )

@@ -6,26 +6,33 @@
 /* Card Wrapper Style */
 .cardWrapperStyle {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 /* Manual Card Style */
 .manualCardStyle {
     position: relative;
-    width: 20%;
+    width: 23%;
 }
 
 .manualCardImgWrapper {
-    width: 100%;
-
-}
-
-.manualCardImgWrapper img {
+    position: relative;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    border-radius: 2%;
 }
+
+.cardImgStyle, .hoverImgStyle {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 6%;
+}
+
+.hoverImgStyle {
+    position: absolute;
+    opacity: 0;
+}
+
 
 .popDespStyle {
     position: absolute;
@@ -41,5 +48,9 @@
 
 /* hover trigger */
 .manualCardStyle:hover .popDespStyle {
+    opacity: 1;
+}
+
+.manualCardStyle:hover .hoverImgStyle {
     opacity: 1;
 }

@@ -7,7 +7,6 @@ import DespFeatures from "./HomeComponents/DespFeatures"
 import FuncFeatures from "./HomeComponents/FuncFeatures"
 import HomeManual from "./HomeComponents/HomeManual"
 
-
 export default class HomePage extends Component {
     constructor(props) {
         super(props)
