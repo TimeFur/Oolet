@@ -6,6 +6,7 @@ import HomeHeader from "./HomeComponents/HomeHeader"
 import DespFeatures from "./HomeComponents/DespFeatures"
 import FuncFeatures from "./HomeComponents/FuncFeatures"
 import HomeManual from "./HomeComponents/HomeManual"
+import EmailComponent from "./EmailComponent"
 
 export default class HomePage extends Component {
     constructor(props) {

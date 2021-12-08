@@ -6,7 +6,7 @@ import styles from "./OoletContainer.module.css"
 import GatherPage from "./GatherPage"
 import HomePage from "./HomePage"
 import DownloadProPage from "./DownloadProPage"
-
+import EmailComponent from "./EmailComponent"
 // utils function
 import { PostToContent, registerCB } from "../util/Comm"
 
@@ -54,6 +54,8 @@ export default class OoletContainer extends Component {
         )
     }
 
+
+
     // life cycle
     componentDidMount() {
         registerCB({ type: "FROM_EXTENSION", callback: this.getContentListCallback })
@@ -68,7 +70,7 @@ export default class OoletContainer extends Component {
         return (
             <div className={styles.container} style={style}>
                 <BrowserRouter>
-                    {this.BarContainer()}
+                    <this.BarContainer />
 
                     <div className={styles.contentWrapper}>
                         <Routes>
@@ -80,6 +82,10 @@ export default class OoletContainer extends Component {
                             {/* for advertisement */}
                         </div>
                     </div>
+                    <div className={styles.footerStyle}>
+                        <EmailComponent height="20vh" width="100vw" />
+                    </div>
+
                 </BrowserRouter>
             </div>
         )

@@ -5,8 +5,6 @@ import {
     FUNC_FEATURES_SRC
 } from "../../static/SourceExport"
 
-const IMG_SRC = "https://i.pinimg.com/564x/65/b8/ea/65b8ea016a92ac16696a640483926a4d.jpg"
-const DEFAULT_HEIGHT = "40vh"
 export default class FuncFeatures extends Component {
     constructor(props) {
         super(props)
@@ -37,7 +35,7 @@ export default class FuncFeatures extends Component {
     featureIntroImage = () => {
         return (
             <div className={styles.featureImgStyle}>
-                <img src={FUNC_FEATURES_SRC} alt="" srcset="" />
+                <img src={FUNC_FEATURES_SRC} alt="" srcSet="" />
             </div>
         )
     }

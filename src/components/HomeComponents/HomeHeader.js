@@ -16,7 +16,7 @@ export default class HomeHeader extends Component {
     iconFloat = () => {
         return (
             <div className={styles.iconFlatStyle}>
-                <img src={LOGO_IMGSRC} alt="" srcset="" />
+                <img src={LOGO_IMGSRC} alt="" srcSet="" />
             </div>
         )
     }

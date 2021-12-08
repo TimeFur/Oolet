@@ -19,8 +19,12 @@
 
 /* Vide Manual Style */
 .vidManualStyle {
-    width: 60%;
+    width: 55%;
 
+}
+
+.vidManualStyle iframe {
+    width: 100%;
 }
 
 .iconFlatStyle {
