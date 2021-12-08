@@ -14,7 +14,9 @@
     height: 2.5rem;
     align-items: center;
     justify-content: space-around;
-    /* background-color: aquamarine; */
+    background-color: rgba(26, 218, 224, 0.6);
+    transition: all 0.2s ease-in-out;
+    z-index: 1;
 }
 
 .barImgWrapperStyle {
@@ -36,14 +38,19 @@
 
 .controlWrapper {
     width: 30%;
+    height: 100%;
     display: flex;
     justify-content: space-around;
+    font-family: "DejaVu Sans Mono", monospace;
     align-items: center;
     user-select: none;
+
 }
 
-.controlWrapper p {
+.controlWrapper a {
     cursor: pointer;
+    text-decoration: none;
+    font-size: 1.2rem;
     transition: all 0.2s ease-out;
 }
 

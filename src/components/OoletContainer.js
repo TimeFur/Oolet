@@ -39,12 +39,29 @@ export default class OoletContainer extends Component {
 
     // component
     BarContainer = () => {
+
+        // mount
+        const onBarMountRef = (ref) => {
+            this.barRef = ref
+        }
+        //event of wheel
+        document.addEventListener("wheel", (e) => {
+            if (this.barRef) {
+                if (e.deltaY < 0) {
+                    this.barRef.style.height = "2.5rem";
+                    this.barRef.style.opacity = "1"
+                } else {
+                    this.barRef.style.height = "0rem";
+                    this.barRef.style.opacity = "0"
+                }
+            }
+        })
+
         return (
-            <div className={styles.barStyle}>
+            <div className={styles.barStyle} ref={onBarMountRef} >
                 <div className={styles.barImgWrapperStyle}>
                     <img src={LOGO_IMGSRC} alt="" />
                 </div>
-                <div className={styles.barTitleStyle}>Oolet</div>
                 <div className={styles.controlWrapper}>
                     <Link to="/">HOME</Link>
                     <Link to="/gather">Gather</Link>
@@ -54,9 +71,6 @@ export default class OoletContainer extends Component {
         )
     }
 
-
-
-    // life cycle
     componentDidMount() {
         registerCB({ type: "FROM_EXTENSION", callback: this.getContentListCallback })
     }
