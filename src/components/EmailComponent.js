@@ -13,7 +13,6 @@ export default class EmailComponent extends Component {
             message: ""
         }
         init(process.env.REACT_APP_EMAIL_USER_ID);
-        console.log("Process env: ", process.env.REACT_APP_EMAIL_USER_ID)
     }
 
     sendEmail = (e) => {
