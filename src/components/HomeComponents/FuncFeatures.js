@@ -16,18 +16,18 @@ export default class FuncFeatures extends Component {
     featureList = ({ }) => {
         return (
             <div className={styles.featureListWrapperStyle}>
-                <ul className={styles.featureListStyle}>
-                    <li><b>Moving image:</b> Click once and drag anywhere</li>
-                    <li><b>Crop image:</b> Hold the left click in any position of the image and drag to right down to crop area</li>
-                    <li><b>Red scale anchor:</b> Scale the image in fix ratio</li>
-                    <li><b>Green scale anchor:</b> Ajust visible area</li>
-                    <li><b>Slider:</b> control opacity of the image</li>
-                    <li><b>"H" icon:</b> hidden image by replacing it as H icon</li>
-                    <li><b>"X" icon:</b> delete this shot</li>
-                    <li><b>"D" icon:</b> Download visible part of image</li>
-                    <li><b>"F" icon:</b> show the whole image in container</li>
-                    <li><b>"S" icon:</b> search image by google search</li>
-                </ul>
+                <div className={styles.featureListStyle}>
+                    <div><b>Moving image:</b> Click once and drag anywhere</div>
+                    <div><b>Crop image:</b> Hold the left click in any position of the image and drag to right down to crop area</div>
+                    <div><b>Red scale anchor:</b> Scale the image in fix ratio</div>
+                    <div><b>Green scale anchor:</b> Ajust visible area</div>
+                    <div><b>Slider:</b> control opacity of the image</div>
+                    <div><b>"H" icon:</b> hidden image by replacing it as H icon</div>
+                    <div><b>"X" icon:</b> delete this shot</div>
+                    <div><b>"D" icon:</b> Download visible part of image</div>
+                    <div><b>"F" icon:</b> show the whole image in container</div>
+                    <div><b>"S" icon:</b> search image by google search</div>
+                </div>
             </div>
         )
     }
@@ -47,7 +47,7 @@ export default class FuncFeatures extends Component {
 
         return (
             <div className={styles.container} style={style}>
-                <h1>Hover image Features</h1>
+                <h1 className={styles.titleStyle}>Hover image Features</h1>
                 <div className={styles.featuresWrapperStyle}>
                     <this.featureList />
                     <this.featureIntroImage />

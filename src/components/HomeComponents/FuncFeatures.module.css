@@ -3,35 +3,51 @@
     height: 100%;
 }
 
+.titleStyle {
+    font-family: 'Josefin Slab', serif;
+    font-size: 2.6rem;
+}
+
 /* Features Wrapper Style */
 .featuresWrapperStyle {
     width: 100%;
     height: 86%;
     display: flex;
     gap: 3rem;
+    justify-content: center;
+    align-items: center;
+    /* background-color: rgb(245, 100, 100); */
 }
 
 .featureListWrapperStyle {
     width: 30%;
     height: 100%;
+    /* background-color: aqua; */
+    margin-left: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .featureListStyle {
     display: flex;
     height: 100%;
     font-size: 1.6rem;
+    gap: 1.2rem;
+    text-align: left;
+    font-family: 'Maven Pro', sans-serif;
     flex-direction: column;
     justify-content: space-around;
     align-items: space-around;
 }
 
-.featureListStyle li {
+.featureListStyle div {
     box-shadow: 0px 3px 6px lightblue;
 }
 
 /* .Image style */
 .featureImgStyle {
     width: 70%;
+    height: 100%;
     /* background-color: rgb(183, 248, 234); */
     border-radius: 1rem;
 }
@@ -40,5 +56,6 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
+    border-radius: 1rem;
     box-shadow: 2px 2px 1rem gray;
 }

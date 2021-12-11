@@ -11,8 +11,6 @@ export default class HomePage extends Component {
     constructor(props) {
         super(props)
     }
-
-
     // sub-component
 
     render() {

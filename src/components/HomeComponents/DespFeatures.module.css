@@ -1,5 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Trirong:wght@100&display=swap');
+
 .container {
     width: 100%;
+    padding-bottom: 1rem;
+    background-color: rgb(255, 255, 255);
+
+    margin-top: 3rem;
+}
+
+.featureTitleStyle {
+    font-size: 2.6rem;
+    font-weight: 600;
+    font-family: 'Trirong', serif;
 }
 
 /* cardContainerStyle */
@@ -9,6 +21,8 @@
     justify-content: center;
     align-items: center;
     border-radius: 60%;
+    font-size: 1.4rem;
+    font-family: 'Maven Pro', sans-serif;
     box-shadow: 5px 6px 2px rgb(247, 89, 89);
 }
 

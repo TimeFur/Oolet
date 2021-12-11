@@ -1,5 +1,8 @@
 .container {
-    width: 100%;
+    width: 90%;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 
@@ -8,13 +11,20 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding-top: 1rem;
+    margin-top: 4rem;
+}
+
+.manualTitleStyle {
+    font-size: 2.6rem;
+    font-family: 'Josefin Slab', serif;
 }
 
 /* Manual Card Style */
 .manualCardStyle {
     position: relative;
     height: 100%;
+    font-size: 1.4rem;
+    font-family: 'Maven Pro', sans-serif;
 }
 
 .manualCardImgWrapper {

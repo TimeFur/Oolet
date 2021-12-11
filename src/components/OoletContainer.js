@@ -63,9 +63,18 @@ export default class OoletContainer extends Component {
                     <img src={LOGO_IMGSRC} alt="" />
                 </div>
                 <div className={styles.controlWrapper}>
-                    <Link to="/">HOME</Link>
-                    <Link to="/gather">Gather</Link>
-                    <Link to="/downloadpro">Download</Link>
+                    <Link to="/">
+                        <span className={styles.barTextStyle}>Home</span>
+                    </Link>
+                    <Link to="/gather">
+                        <span className={styles.barTextStyle}>Collect</span>
+                    </Link>
+                    <Link to="/downloadpro">
+                        <span className={styles.barTextStyle}>Product</span>
+                    </Link>
+                    <a href="#emailId">
+                        <span className={styles.barTextStyle}>Contact</span>
+                    </a>
                 </div>
             </div>
         )
@@ -96,7 +105,7 @@ export default class OoletContainer extends Component {
                             {/* for advertisement */}
                         </div>
                     </div>
-                    <div className={styles.footerStyle}>
+                    <div id='emailId' className={styles.footerStyle}>
                         <EmailComponent height="20vh" width="100vw" />
                     </div>
 

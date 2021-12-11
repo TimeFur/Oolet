@@ -45,7 +45,7 @@ export default class HomeManual extends Component {
                 </div>
 
                 <div className={styles.popDespStyle}>{popDesp}</div>
-                <h2>{title}</h2>
+                <div>{title}</div>
             </div>
         )
     }
@@ -68,9 +68,11 @@ export default class HomeManual extends Component {
         }
         return (
             <div className={styles.container} style={style}>
-                <h1>HomeManual</h1>
+                <h1 className={styles.manualTitleStyle}>Manual</h1>
                 {this.manualCardWrapper(this.state.list, "24%")}
+                <h1 className={styles.manualTitleStyle}>Search Image</h1>
                 {this.manualCardWrapper(this.state.searchList, "40%")}
+                <h1 className={styles.manualTitleStyle}>Download immediately</h1>
                 {this.manualCardWrapper(this.state.downloadList, "26%")}
             </div>
         )

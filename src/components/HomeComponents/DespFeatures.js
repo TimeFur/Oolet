@@ -28,7 +28,7 @@ export default class DespFeatures extends Component {
                 <div className={styles.iconWrapperStyle}>
                     <img src={icon} alt="" />
                 </div>
-                <h2>{title}</h2>
+                <div>{title}</div>
                 <p>{desp}</p>
             </div>
         )
@@ -47,11 +47,11 @@ export default class DespFeatures extends Component {
 
     render() {
         const style = {
-            height: this.props.height
+            height: this.props.height,
         }
         return (
             <div className={styles.container} style={style}>
-                <h1>Features</h1>
+                <div className={styles.featureTitleStyle}>Features</div>
                 <this.FeaturesWrapper />
             </div>
         )
