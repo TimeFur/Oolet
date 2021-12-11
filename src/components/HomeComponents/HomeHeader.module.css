@@ -31,6 +31,25 @@
     font-size: 1.6rem;
 }
 
+.despDownloadStyle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.1s ease-in;
+    border-radius: 1rem;
+    box-shadow: 1px 1px 3px lightcoral;
+    background-color: rgb(42, 123, 245);
+    color: white;
+    font-size: 2.4rem;
+}
+
+.despDownloadStyle:hover {
+    color: rgb(16, 255, 8);
+    font-weight: 600;
+}
+
 /* Vide Manual Style */
 .vidManualStyle {
     width: 55%;

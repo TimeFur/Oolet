@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import styles from "./HomeHeader.module.css"
 // modules
 import YouTube from 'react-youtube';
+// api
+import FireBaseFunc from "../../util/FirebaseFunc"
 
 import LOGO_IMGSRC from "../../static/icon-Oolet.png"
 const DEFAULT_VID_ID = "nXpB1rixnPQ"
@@ -11,7 +13,14 @@ export default class HomeHeader extends Component {
     }
 
     // Handler
-
+    // Handler
+    downloadHandler = (e) => {
+        FireBaseFunc.downloadHandler("WU.jpg")
+            .then((url) => {
+                console.log("download ", url)
+                window.open(url, '_blank').focus();
+            })
+    }
     // sub-components
     iconFloat = () => {
         return (
@@ -42,6 +51,9 @@ export default class HomeHeader extends Component {
                     Oolet extension is created for user want to shot and see in current site
                     Also, want to see the different paragraph at the same time
                 </p>
+            </div>
+            <div className={styles.despDownloadStyle} onClick={this.downloadHandler}>
+                Free Download
             </div>
         </div>)
     }
