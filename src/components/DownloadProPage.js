@@ -14,10 +14,10 @@ export default class DownloadProPage extends Component {
                 ["Crop", ["V", "V"]],
                 ["Adjust Opacity", ["V", "V"]],
                 ["Hidden", ["V", "V"]],
-                ["Get shoot from other tabs", ["V", "V"]],
                 ["Download", ["V", "V"]],
                 ["Search", ["V", "V"]],
                 ["Multi-Shoot", ["3 limitation", "V"]],
+                ["Get shoot from other tabs", ["X", "V"]],
             ]
         }
     }
@@ -51,10 +51,18 @@ export default class DownloadProPage extends Component {
         )
     }
 
-    proportyFunc = (key = 0, property = "", list = []) => {
+    proportyFunc = (key = 0, property = "", list = [], itemCusStyle = {}) => {
         const checkList = list.map((item, key) => {
+
+            const style = {
+                color: (item == "V") ? "green" : (item == "X") ? "red" : "",
+                ...itemCusStyle
+            }
+
             return (
-                <div key={key} className={styles.propertyCheckStyle}>{item}</div>
+                <div key={key} className={styles.propertyCheckStyle} style={style}>
+                    {item}
+                </div>
             )
         })
         return (
@@ -76,7 +84,14 @@ export default class DownloadProPage extends Component {
     render() {
 
         const compareListComponent = this.state.compareList.map((items, key) => {
-            return this.proportyFunc(key, items[0], items[1])
+            var itemCusStyle = {}
+            if (key == 0)
+                itemCusStyle = {
+                    fontSize: "2rem",
+                    fontWeight: "600",
+                    fontFamily: "'Josefin Slab', serif",
+                }
+            return this.proportyFunc(key, items[0], items[1], itemCusStyle)
         })
         const len = this.state.compareList.length
 

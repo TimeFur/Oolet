@@ -47,6 +47,7 @@
     position: relative;
     left: 50%;
     top: 50%;
+    height: 80%;
     transform: translate(-50%, -50%);
     display: flex;
     width: 80%;
@@ -56,16 +57,18 @@
 
 .propertyWrapper {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: space-between;
 
     background-color: white;
-    padding: 0.5rem;
+    /* padding: 0.5rem; */
 }
 
 .propertyTitleStyle {
     width: 20%;
-    /* background-color: red; */
+    background-color: rgb(252, 122, 122);
+    font-size: 1.4rem;
+
 }
 
 .propertyCheckStyle {
@@ -81,11 +84,13 @@
     transition: all 0.1s ease-in;
     border-radius: 1rem;
     box-shadow: 1px 1px 3px lightcoral;
-    background-color: rgb(139, 47, 245);
+    background-color: rgb(42, 123, 245);
     color: white;
+    font-size: 2rem;
+
 }
 
 .checkWrapperStyle:hover {
-    color: rgb(51, 253, 51);
+    color: rgb(16, 255, 8);
     font-weight: 600;
 }
