@@ -65,7 +65,7 @@ export default class OoletContainer extends Component {
                     <Link to="/">
                         <span className={styles.barTextStyle}>Home</span>
                     </Link>
-                    <Link to="/gather">
+                    <Link to="/collect">
                         <span className={styles.barTextStyle}>Collect</span>
                     </Link>
                     <Link to="/downloadpro">
@@ -96,7 +96,7 @@ export default class OoletContainer extends Component {
                     <div className={styles.contentWrapper}>
                         <Routes>
                             <Route path="/" element={<HomePage />} />
-                            <Route path="/gather" element={<GatherPage contentList={this.state.contentList} gatherHandler={this.collectHandler} />} />
+                            <Route path="/collect" element={<GatherPage contentList={this.state.contentList} gatherHandler={this.collectHandler} />} />
                             <Route path="/downloadpro" element={<DownloadProPage />} />
                         </Routes>
                     </div>

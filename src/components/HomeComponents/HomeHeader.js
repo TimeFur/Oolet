@@ -6,13 +6,12 @@ import YouTube from 'react-youtube';
 import FireBaseFunc from "../../util/FirebaseFunc"
 
 import LOGO_IMGSRC from "../../static/icon-Oolet.png"
-const DEFAULT_VID_ID = "nXpB1rixnPQ"
+const DEFAULT_VID_ID = "5qr2WzQrrJQ"
 export default class HomeHeader extends Component {
     constructor(props) {
         super(props)
     }
 
-    // Handler
     // Handler
     downloadHandler = (e) => {
         FireBaseFunc.downloadHandler("WU.jpg")
@@ -65,8 +64,10 @@ export default class HomeHeader extends Component {
             playerVars: {
                 // https://developers.google.com/youtube/player_parameters
                 autoplay: 1,
+                loop: 1
             },
         };
+
         return (
             <div className={styles.vidManualStyle}>
                 <YouTube videoId={DEFAULT_VID_ID} opts={opts} />
