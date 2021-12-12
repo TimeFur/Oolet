@@ -35,17 +35,13 @@ export default class FuncBar extends Component {
     // component
     funcBarUpdate = (cropInfo = { x: 0, y: 0 }) => {
         const style = {
-            position: "absolute",
             top: cropInfo.y,
             left: cropInfo.x,
-            width: "10rem",
-            backgroundColor: "yellow",
             transition: "all 0.2s ease",
-            zIndex: 2
         }
 
         return (
-            <div style={style}>
+            <div style={style} className={styles.containerStyle}>
                 <input className={styles.editBarSearchStyle} type="button" value="search" onClick={(e) => this.searchImgHandler(e)} />
                 <input className={styles.editBarDownloadStyle} type="button" value="download" onClick={(e) => this.downloadImgHandler(e)} />
             </div>

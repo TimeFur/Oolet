@@ -31,3 +31,11 @@
 .ContentConainerStyle {
     position: relative;
 }
+
+.collectBtnStyle {
+    cursor: pointer;
+    background-color: rgb(40, 236, 220);
+    border-radius: 1rem;
+    border: none;
+    box-shadow: 1px 1px gray;
+}

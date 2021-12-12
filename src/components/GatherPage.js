@@ -47,7 +47,7 @@ export default class GatherPage extends Component {
         return (
             <>
                 <div className={styles.layoutContainerStyle}>
-                    <input type="button" value="Gather Shoots" onClick={this.gatherHandler} />
+                    <input type="button" className={styles.collectBtnStyle} value="Collect Shoots" onClick={this.gatherHandler} />
                     <ListShoots contentList={this.props.contentList} setImgCb={this.setPickImgCallback} />
                 </div>
                 <div className={styles.ContentConainerStyle}>
