@@ -15,7 +15,7 @@ export default class DownloadProPage extends Component {
                 ["Adjust Opacity", ["V", "V"]],
                 ["Hidden", ["V", "V"]],
                 ["Download", ["V", "V"]],
-                ["Search", ["V", "V"]],
+                ["Search", ["At least 5 sec delay", "V"]],
                 ["Multi-Shoot", ["3 limitation", "V"]],
                 ["Get shoot from other tabs", ["X", "V"]],
             ]
@@ -99,7 +99,7 @@ export default class DownloadProPage extends Component {
             <div className={styles.container}>
                 <div className={styles.compareListWrapper}>
                     {compareListComponent}
-                    {this.proportyFunc(len + 1, "", [this.checkButton("Download"), this.checkButton("Buy now")])}
+                    {this.proportyFunc(len + 1, "", [this.checkButton("Download"), this.checkButton("Buy now ($10USD)")])}
                 </div>
             </div>
         )

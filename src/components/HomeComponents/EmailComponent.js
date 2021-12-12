@@ -18,8 +18,6 @@ export default class EmailComponent extends Component {
     sendEmail = (e) => {
         e.preventDefault();
 
-        console.log("Send ", this.state)
-
         emailjs.send("gmail", process.env.REACT_APP_EMAIL_TEMPLATE, {
             from_name: this.state.name,
             email: this.state.email,

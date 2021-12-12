@@ -5,3 +5,32 @@
     /* padding-right: 10%; */
 
 }
+
+
+/* footerStyle */
+.footerStyle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    bottom: 0px;
+    background-color: rgb(149, 240, 211);
+
+}
+
+.emailTitleStyle {
+    font-family: 'Josefin Slab', serif;
+    font-size: 2rem;
+}
+
+.emailDespStyle {
+    font-family: 'Maven Pro', sans-serif;
+    font-size: 1.4rem;
+}
+
+.emailWrapper {
+    margin-top: 1rem;
+    width: 80%;
+
+}
