@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styles from "./ListShoots.module.css"
-import { PostToContent, registerCB } from "../util/Comm"
+import { PostToContent, registerCB } from "../../util/Comm"
 
 const DEFAULT_IMG = "https://i.pinimg.com/564x/51/45/c0/5145c0dc420e967fc4c0f8f72e20c3a2.jpg"
 
