@@ -16,7 +16,8 @@ export default class GatherPage extends Component {
         this.state = {
             pickStatus: {}, //{imgSrc, append},
             searchImage: undefined,
-            cropImageSrc: ""
+            cropImageSrc: "",
+            funcBarComp: undefined
         }
     }
 
@@ -50,10 +51,15 @@ export default class GatherPage extends Component {
         downloadImage(this.state.cropImageSrc)
     }
 
-    cropCompleteCallback = (cropImageSrc) => {
+    cropCompleteCallback = (cropImageSrc, cropInfo) => {
+        // mouse release
+        console.log("Mouse up", cropInfo)
+
+        const comp = this.funcBarUpdate(cropInfo.y, cropInfo.x)
         this.setState(state => {
             return {
-                cropImageSrc: cropImageSrc
+                cropImageSrc: cropImageSrc,
+                funcBarComp: comp
             }
         })
     }
@@ -68,6 +74,26 @@ export default class GatherPage extends Component {
             </div>
         )
     }
+
+    funcBarUpdate = (topPos = 0, leftPos = 0) => {
+        const style = {
+            position: "absolute",
+            top: topPos,
+            left: leftPos,
+            width: "10rem",
+            // height: "1rem",
+            backgroundColor: "yellow",
+            transition: "all 0.2s ease",
+            zIndex: 2
+        }
+
+        return (
+            <div style={style}>
+                Func Bar
+            </div>
+        )
+    }
+
     render() {
         return (
             <>
@@ -76,6 +102,8 @@ export default class GatherPage extends Component {
                     <ListShoots contentList={this.props.contentList} setImgCb={this.setPickImgCallback} />
                 </div>
                 <div className={styles.ContentConainerStyle}>
+
+                    {this.state.funcBarComp}
                     <this.editImageBarContainer />
                     <CropImageContainer imgSrc={this.state.pickStatus.imgSrc} cropCompleteCallback={this.cropCompleteCallback} />
                 </div>

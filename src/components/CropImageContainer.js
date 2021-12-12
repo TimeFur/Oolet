@@ -32,7 +32,7 @@ export default class CropImageContainer extends Component {
             );
 
             this.setState({ croppedImageUrl }, () => {
-                this.props.cropCompleteCallback(this.state.croppedImageUrl)
+                this.props.cropCompleteCallback(this.state.croppedImageUrl, crop)
             });
         }
     }

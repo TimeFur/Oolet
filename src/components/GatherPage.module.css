@@ -27,3 +27,7 @@
 .hiddenStyle {
     display: none;
 }
+
+.ContentConainerStyle {
+    position: relative;
+}
