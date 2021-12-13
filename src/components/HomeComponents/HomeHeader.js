@@ -14,7 +14,7 @@ export default class HomeHeader extends Component {
 
     // Handler
     downloadHandler = (e) => {
-        FireBaseFunc.downloadHandler("WU.jpg")
+        FireBaseFunc.downloadHandler(process.env.REACT_APP_DOWNLOAD_FREE_FILE)
             .then((url) => {
                 console.log("download ", url)
                 window.open(url, '_blank').focus();

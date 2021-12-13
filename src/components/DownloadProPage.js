@@ -24,8 +24,8 @@ export default class DownloadProPage extends Component {
 
 
     // Handler
-    downloadHandler = (e) => {
-        FireBaseFunc.downloadHandler("WU.jpg")
+    downloadHandler = (e, fileName = process.env.REACT_APP_DOWNLOAD_FREE_FILE) => {
+        FireBaseFunc.downloadHandler(fileName)
             .then((url) => {
                 console.log("download ", url)
                 window.open(url, '_blank').focus();
@@ -73,9 +73,9 @@ export default class DownloadProPage extends Component {
         )
     }
 
-    checkButton = (title) => {
+    checkButton = (title, fileName = process.env.REACT_APP_DOWNLOAD_FREE_FILE) => {
         return (
-            <div className={styles.checkWrapperStyle} onClick={this.downloadHandler}>
+            <div className={styles.checkWrapperStyle} onClick={(e) => this.downloadHandler(e, fileName)}>
                 {title}
             </div>
         )
@@ -99,7 +99,11 @@ export default class DownloadProPage extends Component {
             <div className={styles.container}>
                 <div className={styles.compareListWrapper}>
                     {compareListComponent}
-                    {this.proportyFunc(len + 1, "", [this.checkButton("Download"), this.checkButton("Buy now ($10USD)")])}
+                    {this.proportyFunc(len + 1, "",
+                        [
+                            this.checkButton("Download"),
+                            this.checkButton("Buy now ($10USD)", process.env.REACT_APP_DOWNLOAD_PREMIUM_FILE)
+                        ])}
                 </div>
             </div>
         )
