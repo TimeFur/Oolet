@@ -1,8 +1,33 @@
-/* layoutContainerStyle */
-
-.layoutContainerStyle {
-    width: 16%;
+.container {
+    position: relative;
+    width: 100%;
 }
+
+/* containerBarStyle */
+.containerBarStyle {
+    display: flex;
+    width: 100%;
+}
+
+.collectMapStyle, .layoutContainerStyle {
+    position: relative;
+    width: 14%;
+}
+
+.toolBarStyle, .contentConainerStyle {
+    position: relative;
+    width: 86%;
+}
+
+/* containerEditWrapper */
+.containerEditStyle {
+    display: flex;
+    width: 100%;
+}
+
+
+
+/* layoutContainerStyle */
 
 /* editImgBarStyle */
 .editImgBarStyle {
@@ -28,9 +53,6 @@
     display: none;
 }
 
-.ContentConainerStyle {
-    position: relative;
-}
 
 .collectBtnStyle {
     cursor: pointer;
