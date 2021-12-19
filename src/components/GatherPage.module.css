@@ -9,9 +9,15 @@
     width: 100%;
 }
 
-.collectMapStyle, .layoutContainerStyle {
+.swapListStyle, .layoutContainerStyle {
     position: relative;
+    cursor: pointer;
     width: 14%;
+    transition: all 0.5s ease;
+}
+
+.swapListStyle:hover {
+    color: brown;
 }
 
 .toolBarStyle, .contentConainerStyle {

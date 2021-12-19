@@ -6,7 +6,6 @@ import ListShoots from "./CollectComponents/ListShoots"
 import FuncBar from "./CollectComponents/FuncBar"
 import ToolBar from "./CollectComponents/ToolBar"
 import CollectMap from "./CollectComponents/CollectMap"
-
 import CropImageContainer from "./CropImageContainer"
 
 export default class GatherPage extends Component {
@@ -18,11 +17,24 @@ export default class GatherPage extends Component {
             searchImage: undefined,
             cropImageSrc: "",
             cropInfo: {},
-            funcBarComp: undefined
+            funcBarComp: undefined,
+            swapIndex: 0
         }
+
+        this.swapBufferList = []
     }
 
     // Handler and callback
+    swapBufferHandler = (e) => {
+        this.setState(state => {
+            var len = this.swapBufferList.length
+            if (len != 0) {
+                return {
+                    swapIndex: (state.swapIndex + 1 >= len) ? 0 : (state.swapIndex + 1)
+                }
+            }
+        })
+    }
     gatherHandler = (e) => {
         this.props.gatherHandler(e)
     }
@@ -48,12 +60,31 @@ export default class GatherPage extends Component {
     containerBarWrapper = (props) => {
         return (
             <div className={styles.containerBarStyle}>
-                <div className={styles.collectMapStyle}>
-                    <CollectMap />
+                <div className={styles.swapListStyle} onClick={this.swapBufferHandler}>
+                    Swap
                 </div>
                 <div className={styles.toolBarStyle}>
                     <ToolBar />
                 </div>
+            </div>
+        )
+    }
+
+    exhibitComponent = () => {
+        this.swapBufferList = [
+            <>
+                <FuncBar cropInfo={this.state.cropInfo} cropImageSrc={this.state.cropImageSrc} />
+                <CropImageContainer imgSrc={this.state.pickStatus.imgSrc} cropCompleteCallback={this.cropCompleteCallback} />
+            </>,
+            <CollectMap />
+        ]
+        const selfStyle = {
+            width: "100%",
+        }
+
+        return (
+            <div style={selfStyle}>
+                {(this.swapBufferList.length > 0) ? this.swapBufferList[this.state.swapIndex] : ""}
             </div>
         )
     }
@@ -66,12 +97,12 @@ export default class GatherPage extends Component {
                     <ListShoots contentList={this.props.contentList} setImgCb={this.setPickImgCallback} />
                 </div>
                 <div className={styles.contentConainerStyle}>
-                    <FuncBar cropInfo={this.state.cropInfo} cropImageSrc={this.state.cropImageSrc} />
-                    <CropImageContainer imgSrc={this.state.pickStatus.imgSrc} cropCompleteCallback={this.cropCompleteCallback} />
+                    <this.exhibitComponent />
                 </div>
             </div>
         )
     }
+
     render() {
         return (
             <div className={styles.container}>
