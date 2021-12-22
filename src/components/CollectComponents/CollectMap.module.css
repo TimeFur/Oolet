@@ -1,5 +1,8 @@
 .container {
+    position: relative;
     width: 100%;
+    min-height: 80vh;
     background-color: rgb(43, 62, 228);
     color: rgb(255, 255, 255);
+    overflow: hidden;
 }
