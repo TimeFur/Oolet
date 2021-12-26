@@ -63,11 +63,17 @@ export default class ImgInteract extends Component {
             case CROP_LTID:
             case CROP_RTID:
             case CROP_LBID:
+
                 this.cropFlag = !this.cropFlag
                 if (this.cropFlag == true) {
                     this.cropDir = e.currentTarget.getAttribute("id")
+                    this.nodeRect = this.node.getBoundingClientRect()
+                    this.imgWrapperRect = this.nodeImgWrapper.getBoundingClientRect()
                     this.imgRect = this.nodeImg.getBoundingClientRect()
-                    // console.log(this.node.childNodes[0].childNodes[0].getBoundingClientRect())
+                    this.imgRatio = {
+                        leftRatio: parseInt(this.nodeImg.style.left) / this.node.getBoundingClientRect()['width'],
+                        topRatio: parseInt(this.nodeImg.style.top) / this.node.getBoundingClientRect()['height'],
+                    }
                 }
                 break;
             case RBID:
@@ -77,6 +83,15 @@ export default class ImgInteract extends Component {
                 this.scaleFlag = !this.scaleFlag
                 if (this.scaleFlag == true) {
                     this.scaleDir = e.currentTarget.getAttribute("id")
+                    this.nodeRect = this.node.getBoundingClientRect()
+                    this.imgWrapperRect = this.nodeImgWrapper.getBoundingClientRect()
+                    this.imgRect = this.nodeImg.getBoundingClientRect()
+                    this.imgRatio = {
+                        left: parseInt(this.nodeImg.style.left),
+                        top: parseInt(this.nodeImg.style.top),
+                        leftRatio: parseInt(this.nodeImg.style.left) / this.node.getBoundingClientRect()['width'],
+                        topRatio: parseInt(this.nodeImg.style.top) / this.node.getBoundingClientRect()['height'],
+                    }
                 }
                 break;
         }
@@ -97,42 +112,64 @@ export default class ImgInteract extends Component {
 
     scaleHandler = (e) => {
         if (this.scaleFlag) {
-            var { top, left, right, bottom, width, height } = this.node.getBoundingClientRect()
+            var { top, left, right, bottom, width, height } = this.nodeRect
+            var { top: imgWrapperTop, left: imgWrapperLeft, width: imgWrapperWidth, height: imgWrapperHeight } = this.imgWrapperRect
+            var { top: imgTop, left: imgLeft, width: imgWidth, height: imgHeight } = this.imgRect
 
             var mX = e.clientX
             var mY = e.clientY
             var w = width;
             var h = height;
-            // console.log(this.scaleDir, mY, mX, this.node.offsetLeft, this.node.style.transform)
 
             //RB estimate
             if (this.scaleDir == RBID) {
                 w = mX - left
                 h = mY - top
-                this.node.style.width = `${w - SCALE_OFFSET}px`
-                this.node.style.height = `${h - SCALE_OFFSET}px`
+
+                if (w >= h) {
+                    h = w * (height / width)
+                    this.node.style.width = `${w - SCALE_OFFSET}px`
+                    this.node.style.height = `${h - SCALE_OFFSET}px`
+                } else {
+                    w = h * (width / height)
+                    this.node.style.height = `${h - SCALE_OFFSET}px`
+                    this.node.style.width = `${w - SCALE_OFFSET}px`
+                }
             }
 
             //LT estimate
             if (this.scaleDir == LTID) {
-                w = right - mX - SCALE_OFFSET
-                h = bottom - mY - SCALE_OFFSET
+                w = right - mX
+                h = bottom - mY
 
-                this.node.style.width = `${w}px`
-                this.node.style.height = `${h}px`
-                this.node.style.top = `${mY - (this.nodeStaticRect.top) + SCALE_OFFSET}px`
-                this.node.style.left = `${mX - (this.nodeStaticRect.left) + SCALE_OFFSET}px`
+                if (w >= h) {
+                    h = w * (height / width)
+                    this.node.style.width = `${w - SCALE_OFFSET}px`
+                    this.node.style.height = `${h - SCALE_OFFSET}px`
+                } else {
+                    w = h * (width / height)
+                    this.node.style.width = `${w - SCALE_OFFSET}px`
+                    this.node.style.height = `${h - SCALE_OFFSET}px`
+                }
+                this.node.style.top = `${bottom - (this.nodeStaticRect.top) - h + SCALE_OFFSET}px`
+                this.node.style.left = `${right - (this.nodeStaticRect.left) - w + SCALE_OFFSET}px`
             }
+
+            //no matter operation is, the img ratiomust be fixed
+            this.nodeImg.style.width = `${w * (imgWidth / width)}px`
+            this.nodeImg.style.height = `${h * (imgHeight / height)}px`
+            this.nodeImg.style.left = `${w * (this.imgRatio['leftRatio'])}px`
+            this.nodeImg.style.top = `${h * (this.imgRatio['topRatio'])}px`
+
+            console.log(w, w * (imgWidth / width), w - w * (imgWidth / width))
         }
     }
 
     cropHandler = (e) => {
         if (this.cropFlag) {
-            var { top, left, right, bottom, width, height } = this.node.getBoundingClientRect()
+            var { top, left, right, bottom, width, height } = this.nodeRect
+            var { top: imgWrapperTop, left: imgWrapperLeft, width: imgWrapperWidth, height: imgWrapperHeight } = this.imgWrapperRect
             var { top: imgTop, left: imgLeft, width: imgWidth, height: imgHeight } = this.imgRect
-
-            console.log(imgTop, imgLeft, imgWidth, imgHeight)
-
 
             var mX = e.clientX
             var mY = e.clientY
@@ -143,9 +180,9 @@ export default class ImgInteract extends Component {
             if (this.cropDir == CROP_RBID) {
                 w = mX - left
                 h = mY - top
+
                 this.node.style.width = `${w}px`
                 this.node.style.height = `${h}px`
-
             }
 
             //LT estimate
@@ -155,14 +192,18 @@ export default class ImgInteract extends Component {
 
                 this.node.style.width = `${w}px`
                 this.node.style.height = `${h}px`
-                this.node.style.top = `${mY - (this.nodeStaticRect.top)}px`
-                this.node.style.left = `${mX - (this.nodeStaticRect.left)}px`
-            }
+                this.node.style.top = `${bottom - (this.nodeStaticRect.top) - h}px`
+                this.node.style.left = `${right - (this.nodeStaticRect.left) - w}px`
 
-            // this.nodeImg.style.width = `${imgWidth}px`
-            // this.nodeImg.style.height = `${imgHeight}px`
-            // this.nodeImg.style.top = `${imgTop - mY}px`
-            // this.nodeImg.style.left = `${imgLeft - mX}px`
+                // problem
+                this.nodeImg.style.top = `${imgTop - mY}px`
+                this.nodeImg.style.left = `${imgLeft - mX}px`
+            }
+            //no matter operation is, the img width and height must be fixed
+            this.nodeImg.style.width = `${imgWidth}px`
+            this.nodeImg.style.height = `${imgHeight}px`
+
+            console.log(imgTop, imgLeft, top, left, this.nodeImg.style.left, right - imgLeft)
         }
     }
     // life-cycle handler
@@ -174,6 +215,11 @@ export default class ImgInteract extends Component {
             this.moveHandler(e)
             this.cropHandler(e)
         })
+
+        document.addEventListener("mouseup", (e) => {
+            console.log("doc mouse up", this.scaleFlag)
+
+        })
     }
 
     refMount = (ref) => {
@@ -183,6 +229,12 @@ export default class ImgInteract extends Component {
             this.nodeImgWrapper = this.node.childNodes[0]
             this.nodeImg = this.node.childNodes[0].childNodes[0];
             this.nodeStaticRect = this.node.getBoundingClientRect()
+
+            // set up top and left to relative
+            this.nodeImg.style.top = "0px"
+            this.nodeImg.style.left = "0px"
+            this.nodeImg.style.width = `${this.node.getBoundingClientRect()['width']}px`
+            this.nodeImg.style.height = `${this.node.getBoundingClientRect()['height']}px`
         }
     }
 
@@ -192,7 +244,7 @@ export default class ImgInteract extends Component {
                 <div className={styles.imgWrapper}>
                     <img id={this.props.id} className={styles.imgStyle} src={this.props.src} alt="" srcset="" onClick={(e) => this.toggleScaleHandler(e)} />
                 </div>
-
+                {/* following are function elements */}
                 <div id={RBID} className={styles.scaleRBStyle}
                     onMouseUp={(e) => this.toggleScaleHandler(e)}
                 ></div>

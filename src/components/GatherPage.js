@@ -72,11 +72,11 @@ export default class GatherPage extends Component {
 
     exhibitComponent = () => {
         this.swapBufferList = [
+            <CollectMap />,
             <>
                 <FuncBar cropInfo={this.state.cropInfo} cropImageSrc={this.state.cropImageSrc} />
                 <CropImageContainer imgSrc={this.state.pickStatus.imgSrc} cropCompleteCallback={this.cropCompleteCallback} />
-            </>,
-            <CollectMap />
+            </>
         ]
         const selfStyle = {
             width: "100%",
