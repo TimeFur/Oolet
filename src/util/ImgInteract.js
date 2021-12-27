@@ -1,6 +1,16 @@
 import React, { Component } from 'react'
 import styles from "./ImgInteract.module.css"
 
+// define sel id
+const MOVE_SEL = "MOVE"
+const RBID_SEL = "scaleRBSel"
+const LTID_SEL = "scaleLTSel"
+const RTID_SEL = "scaleRTSel"
+const LBID_SEL = "scaleLBSel"
+const CROP_RBID_SEL = "cropRBSel"
+const CROP_LTID_SEL = "cropLTSel"
+const CROP_RTID_SEL = "cropRTSel"
+const CROP_LBID_SEL = "cropLBSel"
 
 const RBID = "scaleRB"
 const LTID = "scaleLT"
@@ -20,6 +30,8 @@ export default class ImgInteract extends Component {
         super(props)
 
         this.state = {
+            moveHorizontal: (this.props.horizontal != undefined) ? this.props.horizontal : true,
+            moveVeritical: (this.props.veritical != undefined) ? this.props.veritical : true,
             scale: {
                 width: "",
                 height: "",
@@ -51,22 +63,29 @@ export default class ImgInteract extends Component {
     }
 
     // 
-    toggleScaleHandler = (e) => {
+    toggleHandler = (e, sel = null) => {
         const target = e.currentTarget
-        console.log(target.id)
-        // console.log("toggleScaleHandler", this.scaleFlag, this.node.getAttribute("data-x"))
-        switch (target.id) {
-            case this.props.id:
+        var mX = e.clientX
+        var mY = e.clientY
+        if (sel == null || this.node == null)
+            return
+
+        switch (sel) {
+            case MOVE_SEL:
                 this.moveFlag = !this.moveFlag;
+                this.clickPos = {
+                    'left': mX - this.node.getBoundingClientRect()['left'],
+                    'top': mY - this.node.getBoundingClientRect()['top'],
+                }
                 break;
-            case CROP_RBID:
-            case CROP_LTID:
-            case CROP_RTID:
-            case CROP_LBID:
+            case CROP_RBID_SEL:
+            case CROP_LTID_SEL:
+            case CROP_RTID_SEL:
+            case CROP_LBID_SEL:
 
                 this.cropFlag = !this.cropFlag
                 if (this.cropFlag == true) {
-                    this.cropDir = e.currentTarget.getAttribute("id")
+                    this.cropDir = sel
                     this.nodeRect = this.node.getBoundingClientRect()
                     this.imgWrapperRect = this.nodeImgWrapper.getBoundingClientRect()
                     this.imgRect = this.nodeImg.getBoundingClientRect()
@@ -76,13 +95,13 @@ export default class ImgInteract extends Component {
                     }
                 }
                 break;
-            case RBID:
-            case LTID:
-            case RTID:
-            case LBID:
+            case RBID_SEL:
+            case LTID_SEL:
+            case RTID_SEL:
+            case LBID_SEL:
                 this.scaleFlag = !this.scaleFlag
                 if (this.scaleFlag == true) {
-                    this.scaleDir = e.currentTarget.getAttribute("id")
+                    this.scaleDir = sel
                     this.nodeRect = this.node.getBoundingClientRect()
                     this.imgWrapperRect = this.nodeImgWrapper.getBoundingClientRect()
                     this.imgRect = this.nodeImg.getBoundingClientRect()
@@ -99,14 +118,18 @@ export default class ImgInteract extends Component {
 
     // handler for different function
     moveHandler = (e) => {
+
+        if (this.node == null)
+            return
         if (this.moveFlag) {
             var { top, left, right, bottom, width, height } = this.nodeStaticRect
             var mX = e.clientX
             var mY = e.clientY
 
             // TODO: how to get the first touch position
-            this.node.style.top = `${mY - (top + height / 2)}px`
-            this.node.style.left = `${mX - (left + width / 2)}px`
+            if (this.state.moveHorizontal)
+                this.node.style.top = `${mY - top - this.clickPos['top']}px`
+            this.node.style.left = `${mX - left - this.clickPos['left']}px`
         }
     }
 
@@ -122,7 +145,7 @@ export default class ImgInteract extends Component {
             var h = height;
 
             //RB estimate
-            if (this.scaleDir == RBID) {
+            if (this.scaleDir == RBID_SEL) {
                 w = mX - left
                 h = mY - top
 
@@ -138,7 +161,7 @@ export default class ImgInteract extends Component {
             }
 
             //LT estimate
-            if (this.scaleDir == LTID) {
+            if (this.scaleDir == LTID_SEL) {
                 w = right - mX
                 h = bottom - mY
 
@@ -177,7 +200,7 @@ export default class ImgInteract extends Component {
             var h = height;
 
             //RB estimate
-            if (this.cropDir == CROP_RBID) {
+            if (this.cropDir == CROP_RBID_SEL) {
                 w = mX - left
                 h = mY - top
 
@@ -186,7 +209,7 @@ export default class ImgInteract extends Component {
             }
 
             //LT estimate
-            if (this.cropDir == CROP_LTID) {
+            if (this.cropDir == CROP_LTID_SEL) {
                 w = right - mX
                 h = bottom - mY
 
@@ -218,7 +241,6 @@ export default class ImgInteract extends Component {
 
         document.addEventListener("mouseup", (e) => {
             console.log("doc mouse up", this.scaleFlag)
-
         })
     }
 
@@ -241,22 +263,22 @@ export default class ImgInteract extends Component {
     render() {
         return (
             <div className={styles.container} ref={this.refMount} >
-                <div className={styles.imgWrapper}>
-                    <img id={this.props.id} className={styles.imgStyle} src={this.props.src} alt="" srcset="" onClick={(e) => this.toggleScaleHandler(e)} />
+                <div className={styles.imgWrapper} onClick={(e) => this.toggleHandler(e, MOVE_SEL)}>
+                    <img id={this.props.id} className={styles.imgStyle} src={this.props.src} alt="" srcset="" />
                 </div>
                 {/* following are function elements */}
                 <div id={RBID} className={styles.scaleRBStyle}
-                    onMouseUp={(e) => this.toggleScaleHandler(e)}
+                    onMouseUp={(e) => this.toggleHandler(e, RBID_SEL)}
                 ></div>
-                <div id={LTID} className={styles.scaleLTStyle}
-                    onMouseUp={(e) => this.toggleScaleHandler(e)}
+                {/* <div id={LTID} className={styles.scaleLTStyle}
+                    onMouseUp={(e) => this.toggleHandler(e, LTID_SEL)}
                 ></div>
                 <div id={CROP_RBID} className={styles.cropRBStyle}
-                    onMouseUp={(e) => this.toggleScaleHandler(e)}
+                    onMouseUp={(e) => this.toggleHandler(e, CROP_RBID_SEL)}
                 ></div>
                 <div id={CROP_LTID} className={styles.cropLTStyle}
-                    onMouseUp={(e) => this.toggleScaleHandler(e)}
-                ></div>
+                    onMouseUp={(e) => this.toggleHandler(e, CROP_LTID_SEL)}
+                ></div> */}
             </div>
         )
     }
