@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 
+import "slider-color-picker";
 // MODE SEL SETTING
 const NULL_MODE = 0
-const EDIT_MODE = 1
-const MOVE_MODE = 2
+const MOVE_MODE = 1
+const EDIT_MODE = 2
 
 export default class EditTextBox extends Component {
     constructor(props) {
@@ -14,20 +15,18 @@ export default class EditTextBox extends Component {
             editEnable: false,
 
             editStyle: {
-                fontSize: "5rem",
+                fontSize: "20px",
                 color: "lightblue",
+                boxShadow: "2px 2px 8px lightblue",
             },
             containerStyle: {
                 position: "absolute",
-                top: "5px",
-                left: "5px",
-                boxShadow: "2px 2px 8px lightblue",
-                width: "auto",
-                height: "auto",
+                top: "5px", left: "5px",
+                // width: "auto", height: "auto",
                 cursor: "default",
             }
         }
-
+        this.colorNode = null
         this.nodeStaticRect = {}
         this.clickPos = {}
     }
@@ -70,10 +69,13 @@ export default class EditTextBox extends Component {
     swithModeHandler = (e) => {
         this.setState(state => {
             return {
-                funcMode: (state.funcMode + 1 > MOVE_MODE) ? NULL_MODE : state.funcMode + 1,
+                funcMode: (state.funcMode + 1 > EDIT_MODE) ? NULL_MODE : state.funcMode + 1,
             }
         }, () => {
             this.styleSwitchHandler({ mX: e.clientX, mY: e.clientY })
+            // avoid selection
+            var sel = window.getSelection();
+            sel.removeAllRanges();
         })
     }
     inputHandler = (e) => {
@@ -93,7 +95,32 @@ export default class EditTextBox extends Component {
         }
     }
 
+    onColorChange = (e) => {
+        const target = e.currentTarget
+        const color = target.value
+        this.setState(state => {
+            var editStyle = { ...state.editStyle }
+            editStyle.color = color
+            return {
+                ...state,
+                editStyle: editStyle
+            }
+        })
+    }
 
+    textSizeHandler = (e) => {
+        const target = e.currentTarget
+        const size = target.value
+
+        this.setState(state => {
+            var editStyle = { ...state.editStyle }
+            editStyle.fontSize = `${size}px`
+            return {
+                ...state,
+                editStyle: editStyle
+            }
+        })
+    }
     // life-cycle
     refMount = (ref) => {
         this.node = ref
@@ -101,6 +128,12 @@ export default class EditTextBox extends Component {
         if (this.node) {
             this.nodeStaticRect = this.node.getBoundingClientRect()
         }
+    }
+
+    colorRefMount = (ref) => {
+        this.colorNode = ref;
+        if (this.colorNode != null)
+            this.colorNode.addEventListener("change", this.onColorChange);
     }
 
     componentDidMount() {
@@ -112,9 +145,11 @@ export default class EditTextBox extends Component {
     render() {
         return (
             <div style={this.state.containerStyle} ref={this.refMount} onDoubleClick={this.swithModeHandler}>
+                {(this.state.funcMode == EDIT_MODE) ? <input type="range" min="6" max="200" value={parseInt(this.state.editStyle.fontSize)} onInput={this.textSizeHandler} /> : ""}
                 <div contentEditable={this.state.editEnable} style={this.state.editStyle} onInput={this.inputHandler}>
                     TEXT
                 </div>
+                {(this.state.funcMode == EDIT_MODE) ? <slider-color-picker ref={this.colorRefMount}></slider-color-picker> : ""}
             </div>
         )
     }

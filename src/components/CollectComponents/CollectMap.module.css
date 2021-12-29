@@ -1,11 +1,17 @@
 .container {
     position: relative;
+    width: 100%;
+    color: rgb(255, 255, 255);
+}
+
+.wrapper {
+    position: relative;
     display: flex;
 
     flex-direction: column;
     width: 100%;
     /* min-height: 80vh; */
-    background-color: rgb(43, 62, 228);
+    background-color: rgb(181, 231, 235);
     color: rgb(255, 255, 255);
     overflow: hidden;
 }
@@ -17,4 +23,23 @@
     justify-content: center;
     width: 100%;
     margin-top: 10px;
+    /* background-color: lightpink; */
+}
+
+.addBtnStyle {
+    position: relative;
+    bottom: 1px;
+    cursor: pointer;
+    font-size: 2rem;
+    font-weight: 700;
+    height: 3rem;
+    width: 3rem;
+    background: rgb(88, 228, 134);
+    box-shadow: 1px 1px 8px rgb(253, 183, 103);
+    border-radius: 50%;
+    transition: all 0.2s ease-out;
+}
+
+.addBtnStyle:hover {
+    color: rgb(240, 61, 61);
 }
